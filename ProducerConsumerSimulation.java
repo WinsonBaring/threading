@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class ProducerConsumerSimulation {
     public static void main(String[] args) {
         SharedMemory sharedMemory = new SharedMemory();
         
