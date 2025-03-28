@@ -18,6 +18,9 @@ class Producer extends Thread {
                 }
             }
             sharedMemory.addChar(message.charAt(i));
+            System.out.println("Producer added: " + message.charAt(i));
         }
+        sharedMemory.setComplete();
+        System.out.println("Producer finished");
     }
 }

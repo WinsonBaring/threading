@@ -9,14 +9,20 @@ class Consumer extends Thread {
     public void run() {
         while (true) {
             while (sharedMemory.isEmpty()) {
+                if (sharedMemory.isComplete()) {
+                    System.out.println("\nConsumer finished");
+                    return;
+                }
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-            System.out.print(sharedMemory.getChar());
+            char c = sharedMemory.getChar();
+            System.out.print(c);
             System.out.flush();
+            System.out.println("\nConsumer read: " + c);
         }
     }
 }

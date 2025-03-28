@@ -3,12 +3,14 @@ class SharedMemory {
     private char[] buffer;
     private int in;
     private int out;
+    private boolean isComplete;
 
     public SharedMemory() {
         buffer_size = 5;
         buffer = new char[buffer_size];
         in = 0;
         out = 0;
+        isComplete = false;
     }
 
     public boolean isFull() {
@@ -28,5 +30,13 @@ class SharedMemory {
         char c = buffer[out];
         out = (out + 1) % buffer_size;
         return c;
+    }
+    
+    public void setComplete() {
+        isComplete = true;
+    }
+    
+    public boolean isComplete() {
+        return isComplete && isEmpty();
     }
 }
